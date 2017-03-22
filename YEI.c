@@ -19,7 +19,10 @@
 #define TSS_SET_STREAMING_TIMING 0x52
 #define TSS_START_STREAMING 0x55
 #define TSS_STOP_STREAMING 0x56
+<<<<<<< HEAD
 #define TSS_SET_AXIS 0x74
+=======
+>>>>>>> live_plot/beta
 
 // Stream data stuctures must be packed else they will not properly work
 #pragma pack(push,1)
@@ -152,6 +155,7 @@ PyObject* start_stream(PyObject* self, PyObject* args)
 	unsigned int response_header_setup = 0;
 	unsigned char write_rh_bytes[7];
 	Response_Header response_header;
+<<<<<<< HEAD
 	unsigned char write_stream_bytes[4];
 	unsigned char write_axis_bytes[4];
 
@@ -166,6 +170,11 @@ PyObject* start_stream(PyObject* self, PyObject* args)
 		return Py_BuildValue("[i]",
 			15);
 	}
+=======
+	//unsigned int sample_count = 0;
+
+	unsigned char write_stream_bytes[4];
+>>>>>>> live_plot/beta
 
 	printf("TSS_SET_WIRED_RESPONSE_HEADER_BITFIELD\n");
 	// Setting up the response header, note the size is a 32 bit int even tho only 3 bits are used right now

@@ -5,9 +5,15 @@ import pyqtgraph as pg
 import YEI_BL as YEI
 from collections import deque
 
+<<<<<<< HEAD
 #pg.setConfigOption('background','w')
 #%% Initialize settings
 stream_dur=600; delay=1 #seconds
+=======
+pg.setConfigOption('background','w')
+#%% Initialize settings
+stream_dur=60; delay=1 #seconds
+>>>>>>> live_plot/beta
 interval=100000 #microseconds
 maxlen=int(60/(interval*10**-6))
 
@@ -46,12 +52,19 @@ def process1(q):
   
  #%%Process 2       
 def process2(q):
+<<<<<<< HEAD
     #q.get()
+=======
+>>>>>>> live_plot/beta
     j=0; 
     global gyro_x,gyro_y,gyro_z,t
     global acc_x,acc_y, acc_z, maxlen
     end=maxlen-1
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> live_plot/beta
     win=pg.GraphicsWindow(title="Basic Plotting")
     win.resize(1000,600)
     
@@ -64,18 +77,28 @@ def process2(q):
     p2.addLegend()
     
    # x=[];
+<<<<<<< HEAD
     
     while True:
         y=q.get()
         t=deq_flop(t,y[0]*10**-6); 
+=======
+    while True:
+        y=q.get()
+        t=deq_flop(t,y[0]*10**-6); 
+        #t[end-j]=t[end-j]-t[end]
+>>>>>>> live_plot/beta
         gyro_x=deq_flop(gyro_x,y[1]); gyro_y=deq_flop(gyro_y,y[2]);
         gyro_z=deq_flop(gyro_z,y[3]); acc_x=deq_flop(acc_x,y[4]);  
         acc_y=deq_flop(acc_y,y[5]);  acc_z=deq_flop(acc_z,y[6]);    
 
         if j==0:
+<<<<<<< HEAD
             t_start=t[end]
             t[end]-=t_start
 
+=======
+>>>>>>> live_plot/beta
             p1.setRange(xRange=[0,t[end]])
             p1.plot(t,gyro_x,clear=True,pen='r',name='X-Axis')
             p1.plot(t,gyro_y,pen='b',name='Y-Axis')
@@ -86,7 +109,10 @@ def process2(q):
             p2.plot(t,acc_y,pen='b',name='Y-Axis')
             p2.plot(t,acc_z,pen='g',name='Z-Axis')
         else:
+<<<<<<< HEAD
             t[end]-=t_start
+=======
+>>>>>>> live_plot/beta
             p1.setRange(xRange=[t[end-j],t[end]])
             p1.plot(t,gyro_x,clear=True,pen='r')
             p1.plot(t,gyro_y,pen='b')
@@ -99,13 +125,20 @@ def process2(q):
             
         pg.QtGui.QApplication.processEvents()
         
+<<<<<<< HEAD
         j+=1
         
+=======
+>>>>>>> live_plot/beta
         if y[7]==1 or y[7]==2:
             print('Stop is equal to 2')
             break
         
+<<<<<<< HEAD
         
+=======
+        j+=1
+>>>>>>> live_plot/beta
        
  #%%Start both processes   
 if __name__=='__main__':
